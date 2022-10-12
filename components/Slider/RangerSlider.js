@@ -7,8 +7,9 @@ import Rail from './Rail';
 import RailSelected from './RailSelected';
 import Label from './Label';
 import Notch from './Notch';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const RangeSlider = ({low, setLow, high, setHigh, max, min}) => {
+const RangeSlider = ({low, setLow, high, setHigh, max, min, toggleModal1}) => {
   const renderThumb = useCallback(() => <Thumb />, []);
   const renderRail = useCallback(() => <Rail />, []);
   const renderRailSelected = useCallback(() => <RailSelected />, []);
@@ -21,6 +22,18 @@ const RangeSlider = ({low, setLow, high, setHigh, max, min}) => {
 
   return (
     <>
+      <View style={[tw`flex-row justify-between items-center px-4 mt-4`, {
+         borderTopLeftRadius: 10,
+         borderTopRightRadius: 10,
+         overflow: 'hidden',
+      }]}>
+        <View style={tw`justify-center items-center w-[95%]`}>
+          <Text style={tw`font-bold text-black text-lg`}>Prijs</Text>
+        </View>
+        <TouchableOpacity style={tw`mr-4`} onPress={toggleModal1}>
+          <AntDesign name="close" color="blue" size={25} />
+        </TouchableOpacity>
+      </View>
       <View style={tw`justify-between px-4 flex-1 w-full`}>
         <View>
           <View style={tw`flex-row items-center justify-between px-6 mt-10`}>

@@ -3,7 +3,6 @@ import FlatListItem from './components/RenderList/FlatListItem';
 import RangeSlider from './components/Slider/RangerSlider';
 import {Text, TouchableOpacity, View, Modal} from 'react-native';
 import tw from 'twrnc';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const myData = [
   'jbl',
@@ -50,7 +49,6 @@ const App = () => {
         transparent={true}
         visible={isModalVisible}
         onRequestClose={toggleModal}
-        style={tw`rounded-full`}
         >
         <View style={tw`flex-1 bg-white rounded-lg`}>
           <FlatListItem toggleModal={toggleModal} data={myData} />
@@ -62,11 +60,6 @@ const App = () => {
         visible={isModalVisible1}
         onRequestClose={toggleModal1}>
         <View style={tw`flex-1 bg-white rounded-lg`}>
-          <TouchableOpacity
-            onPress={toggleModal1}
-            style={tw`absolute top-3 right-3`}>
-            <AntDesign name="close" color="blue" size={25} />
-          </TouchableOpacity>
           <RangeSlider
             low={low}
             setLow={setLow}
@@ -74,6 +67,7 @@ const App = () => {
             setHigh={setHigh}
             max={2300}
             min={9}
+            toggleModal1={toggleModal1}
           />
         </View>
       </Modal>
