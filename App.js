@@ -36,12 +36,12 @@ const App = () => {
 
   return (
     <>
-      <View style={tw`flex-1 items-center justify-center`}>
+      <View style={tw`flex-1 items-center justify-center bg-gray-900`}>
         <TouchableOpacity onPress={toggleModal} style={tw`mb-6`}>
-          <Text>Open Render List</Text>
+          <Text style={tw`text-white`}>Open Render List</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={toggleModal1}>
-          <Text>Open Input slider</Text>
+          <Text style={tw`text-white`}>Open Input slider</Text>
         </TouchableOpacity>
       </View>
       <Modal
