@@ -21,31 +21,35 @@ const RangeSlider = ({low, setLow, high, setHigh, max, min}) => {
 
   return (
     <>
-      <View style={tw`flex-row items-center justify-between px-6 mt-10`}>
-        <View
-          style={tw`border rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}>
-          <Text>{low}</Text>
+      <View style={tw`justify-between px-4 flex-1 w-full`}>
+        <View>
+          <View style={tw`flex-row items-center justify-between px-6 mt-10`}>
+            <View
+              style={tw`border rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}>
+              <Text>{low}</Text>
+            </View>
+            <View
+              style={tw`border rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}>
+              <Text>{high}</Text>
+            </View>
+          </View>
+          <View style={tw`px-4`}>
+            <Slider
+              style={tw`mt-10`}
+              min={min}
+              max={max}
+              step={1}
+              floatingLabel
+              renderThumb={renderThumb}
+              renderRail={renderRail}
+              renderRailSelected={renderRailSelected}
+              renderLabel={renderLabel}
+              renderNotch={renderNotch}
+              onValueChanged={handleValueChange}
+            />
+          </View>
         </View>
-        <View
-          style={tw`border rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}>
-          <Text>{high}</Text>
-        </View>
-      </View>
-      <View style={tw`px-4`}>
-        <Slider
-          style={tw`mt-10`}
-          min={min}
-          max={max}
-          step={1}
-          floatingLabel
-          renderThumb={renderThumb}
-          renderRail={renderRail}
-          renderRailSelected={renderRailSelected}
-          renderLabel={renderLabel}
-          renderNotch={renderNotch}
-          onValueChanged={handleValueChange}
-        />
-        <TouchableOpacity style={tw`bg-[#0000ff] px-4 py-3 rounded-md mt-10`}>
+        <TouchableOpacity style={[tw`bg-[#0000ff] px-4 py-3 rounded-md mb-4`]}>
           <Text style={tw`text-center text-white`}>Toon 20 artikelen</Text>
         </TouchableOpacity>
       </View>

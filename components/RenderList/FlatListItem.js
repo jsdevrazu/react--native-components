@@ -41,7 +41,7 @@ const FlatListItem = ({data: myData}) => {
 
   return (
     <>
-      <View style={tw`mt-2 px-6`}>
+      <View style={tw`mt-2 px-6 mt-10`}>
         {/* Search Input */}
         <View style={tw`relative mt-4 mb-4`}>
           <TextInput
