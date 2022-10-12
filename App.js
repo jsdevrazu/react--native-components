@@ -15,6 +15,10 @@ const myData = [
   'fresh in Rabel',
   'apple',
   'orange',
+  "marshall",
+  "bang & olufsen",
+  "jvc",
+  "skullcandy"
 ];
 
 const App = () => {
@@ -46,15 +50,10 @@ const App = () => {
         transparent={true}
         visible={isModalVisible}
         onRequestClose={toggleModal}
-        style={tw`rounded-md`}
+        style={tw`rounded-full`}
         >
         <View style={tw`flex-1 bg-white rounded-lg`}>
-          <TouchableOpacity
-            onPress={toggleModal}
-            style={tw`absolute top-3 right-3`}>
-            <AntDesign name="close" color="blue" size={25} />
-          </TouchableOpacity>
-          <FlatListItem data={myData} />
+          <FlatListItem toggleModal={toggleModal} data={myData} />
         </View>
       </Modal>
       <Modal

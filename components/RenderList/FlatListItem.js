@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import tw from 'twrnc';
 
-const FlatListItem = ({data: myData}) => {
+const FlatListItem = ({data: myData, toggleModal}) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [data] = useState(myData);
   const [datatToShow, setDataToShow] = useState(myData);
@@ -41,7 +41,18 @@ const FlatListItem = ({data: myData}) => {
 
   return (
     <>
-      <View style={tw`mt-2 px-6 mt-10`}>
+      <View style={tw`mt-2 px-6 mt-3`}>
+        <View style={tw`flex-row justify-between items-center`}>
+          <View>
+            <Text style={tw`font-semibold text-[#0000ff]`}>Wissen</Text>
+          </View>
+          <View>
+            <Text style={tw`font-bold text-black text-lg`}>Merk</Text>
+          </View>
+          <TouchableOpacity onPress={toggleModal}>
+            <AntDesign name="close" color="blue" size={25} />
+          </TouchableOpacity>
+        </View>
         {/* Search Input */}
         <View style={tw`relative mt-4 mb-4`}>
           <TextInput
