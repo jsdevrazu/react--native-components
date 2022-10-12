@@ -23,8 +23,8 @@ const RangeSlider = ({low, setLow, high, setHigh, max, min, toggleModal1}) => {
   return (
     <>
       <View style={[tw`flex-row justify-between items-center px-4 mt-4`, {
-         borderTopLeftRadius: 10,
-         borderTopRightRadius: 10,
+         borderTopLeftRadius:30,
+         borderTopRightRadius:30,
          overflow: 'hidden',
       }]}>
         <View style={tw`justify-center items-center w-[95%]`}>

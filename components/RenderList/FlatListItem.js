@@ -41,7 +41,11 @@ const FlatListItem = ({data: myData, toggleModal}) => {
 
   return (
     <>
-      <View style={tw`mt-2 px-6 mt-3`}>
+      <View style={[tw`mt-2 px-6 mt-3`, {
+         borderTopLeftRadius:30,
+         borderTopRightRadius:30,
+         overflow: 'hidden',
+      }]}>
         <View style={tw`flex-row justify-between items-center`}>
           <View>
             <Text style={tw`font-semibold text-[#0000ff]`}>Wissen</Text>
