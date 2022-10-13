@@ -1,32 +1,41 @@
-import {View, Text, TouchableOpacity} from 'react-native';
-import React, {useCallback} from 'react';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import tw from 'twrnc';
-import Slider from 'rn-range-slider';
-import Thumb from './Thumb';
-import Rail from './Rail';
-import RailSelected from './RailSelected';
-import Label from './Label';
-import Notch from './Notch';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {Slider} from '@miblanchard/react-native-slider';
+import SliderContainer from './SliderContainer';
 
-const RangeSlider = ({low, setLow, high, setHigh, max, min, toggleModal1}) => {
-  const renderThumb = useCallback(() => <Thumb />, []);
-  const renderRail = useCallback(() => <Rail />, []);
-  const renderRailSelected = useCallback(() => <RailSelected />, []);
-  const renderLabel = useCallback(value => <Label text={value} />, []);
-  const renderNotch = useCallback(() => <Notch />, []);
-  const handleValueChange = useCallback((low, high) => {
-    setLow(low);
-    setHigh(high);
-  }, []);
+const RangeSlider = ({toggleModal1, min, max, low, high, setLow, setHigh}) => {
+  const changeLowValue = e => {
+    setLow(e);
+    if (e <= min) {
+      setLow(min);
+    } else if (e >= high) {
+      setLow(high - 10);
+    } else {
+      setLow(e);
+    }
+  };
+  const changeHighValue = e => {
+    if (e >= max) {
+      setHigh(max);
+    } else if (e <= low) {
+      setHigh(low + 10);
+    } else {
+      setHigh(e);
+    }
+  };
 
   return (
     <>
-      <View style={[tw`flex-row justify-between items-center px-4 mt-4`, {
-         borderTopLeftRadius:30,
-         borderTopRightRadius:30,
-         overflow: 'hidden',
-      }]}>
+      <View
+        style={[
+          tw`flex-row justify-between items-center px-4 mt-4`,
+          {
+            borderTopLeftRadius: 100,
+            borderTopRightRadius: 100,
+            overflow: 'hidden',
+          },
+        ]}>
         <View style={tw`justify-center items-center w-[95%]`}>
           <Text style={tw`font-bold text-black text-lg`}>Prijs</Text>
         </View>
@@ -37,29 +46,39 @@ const RangeSlider = ({low, setLow, high, setHigh, max, min, toggleModal1}) => {
       <View style={tw`justify-between px-4 flex-1 w-full`}>
         <View>
           <View style={tw`flex-row items-center justify-between px-6 mt-10`}>
-            <View
-              style={tw`border rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}>
-              <Text>{low}</Text>
-            </View>
-            <View
-              style={tw`border rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}>
-              <Text>{high}</Text>
-            </View>
-          </View>
-          <View style={tw`px-4`}>
-            <Slider
-              style={tw`mt-10`}
-              min={min}
-              max={max}
-              step={1}
-              floatingLabel
-              renderThumb={renderThumb}
-              renderRail={renderRail}
-              renderRailSelected={renderRailSelected}
-              renderLabel={renderLabel}
-              renderNotch={renderNotch}
-              onValueChanged={handleValueChange}
+            <TextInput
+              keyboardType="numeric"
+              maxLength={4}
+              style={tw`border text-gray-400 rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}
+              value={low.toString()}
+              onChangeText={changeLowValue}
             />
+            <TextInput
+              keyboardType="numeric"
+              maxLength={4}
+              style={tw`border text-gray-400 rounded-md border-gray-300 p-4 w-20 items-center justify-center h-14 items-center justify-center`}
+              value={high.toString()}
+              onChangeText={changeHighValue}
+            />
+          </View>
+          <View
+            style={{
+              marginTop: 10,
+            }}>
+            <SliderContainer
+              sliderValue={[Number(low), Number(high)]}
+              setLow={setLow}
+              setHigh={setHigh}>
+              <Slider
+                minimumValue={min}
+                maximumValue={max}
+                step={1}
+                trackClickable={true}
+                maximumTrackTintColor="#d3d3d3"
+                minimumTrackTintColor="#0000ff"
+                thumbTintColor="#0000ff"
+              />
+            </SliderContainer>
           </View>
         </View>
         <TouchableOpacity style={[tw`bg-[#0000ff] px-4 py-3 rounded-md mb-4`]}>

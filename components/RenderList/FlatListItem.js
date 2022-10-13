@@ -11,7 +11,7 @@ const FlatListItem = ({data: myData, toggleModal}) => {
 
   const onChange = text => {
     setSearch(text);
-    const filterData = data.filter(item => item.includes(text));
+    const filterData = data.filter(item => item.includes(text.toLowerCase()));
     setDataToShow(filterData);
   };
 
