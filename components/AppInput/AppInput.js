@@ -11,7 +11,7 @@ const AppInput = ({toggleModal}) => {
   function showMessage() {
     Alert.alert('Upload image', 'Choose a option', [
       {
-        text: 'Gallery',
+        text: 'Select Image',
         onPress: () => imageLength != 6 && openLibrary(),
       },
     ]);
@@ -44,7 +44,12 @@ const AppInput = ({toggleModal}) => {
             style={tw`border border-gray-200 justify-center items-center w-full h-40 rounded-md mt-10`}
             activeOpacity={0.5}
             onPress={showMessage}>
-            <AntDesign name="camera" color="gray" size={30} />
+            <Image
+              source={{
+                uri: 'https://cdn-icons-png.flaticon.com/512/1261/1261482.png',
+              }}
+              style={tw`w-24 h-24`}
+            />
           </TouchableOpacity>
         </View>
       )}
@@ -59,9 +64,10 @@ const AppInput = ({toggleModal}) => {
               source={{
                 uri: img.uri,
               }}
+              resizeMode="cover"
             />
             <TouchableOpacity
-              style={tw`absolute top-0 right-0 bg-red-500 w-8 h-8 items-center justify-center rounded-md`}
+              style={tw`absolute top-[-1] right-[-1] bg-red-500 w-8 h-8 items-center justify-center rounded-full`}
               onPress={() => handleDelete(img?.uri)}>
               <AntDesign name="close" color="white" size={20} />
             </TouchableOpacity>
@@ -72,7 +78,12 @@ const AppInput = ({toggleModal}) => {
             style={tw`border border-gray-200 justify-center items-center w-24 h-24 rounded-md`}
             activeOpacity={0.5}
             onPress={showMessage}>
-            <AntDesign name="camera" color="gray" size={25} />
+            <Image
+              source={{
+                uri: 'https://cdn-icons-png.flaticon.com/512/1261/1261482.png',
+              }}
+              style={tw`w-8 h-8`}
+            />
           </TouchableOpacity>
         )}
       </View>
