@@ -47,7 +47,7 @@ const App = () => {
         <TouchableOpacity onPress={toggleModal} style={tw`mb-6`}>
           <Text style={tw`text-white`}>Open Render List</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={toggleModal1}>
+        <TouchableOpacity onPress={toggleModal1}  style={tw`mb-6`}>
           <Text style={tw`text-white`}>Open Input slider</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={toggleModal2}>
