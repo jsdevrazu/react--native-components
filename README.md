@@ -35,5 +35,5 @@ NODE_ENV=production node app
 ```
 
 ## Here is my portfolio feel free to visit
-[http://devcoded.com][PlDb]
+http://devcoded.com
 
