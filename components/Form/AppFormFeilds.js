@@ -9,7 +9,7 @@ import {
   View,
   Image,
 } from 'react-native';
-import COLORS from '../../configs/colors';
+import COLORS from '../../config/colors';
 
 export default function AppFormFeilds({
   name,
@@ -54,7 +54,7 @@ export default function AppFormFeilds({
             resizeMode: 'contain',
             ...styles.mainIcon,
           }}
-          source={require('../../assets/icons/1Password.png')}
+          source={require('../../assets/1Password.png')}
         />
       )}
 
